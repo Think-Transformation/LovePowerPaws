@@ -50,12 +50,13 @@ const { images } = Astro.props;
 
 		<dialog
 			id="gallery-lightbox"
-			class="gallery-dialog fixed left-1/2 top-1/2 z-[100] flex max-h-[90vh] w-[min(96vw,56rem)] max-w-[min(96vw,56rem)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-2xl border border-white/25 bg-lp-teal p-0 text-white shadow-2xl"
+			class="gallery-dialog fixed left-1/2 top-1/2 z-[100] max-h-[90vh] w-[min(96vw,56rem)] max-w-[min(96vw,56rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-white/25 bg-lp-teal p-0 text-white shadow-2xl"
 		>
 			<div class="flex items-center justify-end border-b border-white/20 px-3 py-2">
 				<button
 					type="button"
 					class="gallery-lightbox-close rounded-lg px-3 py-1.5 text-sm font-semibold text-white/95 hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+					onclick="this.closest('dialog')?.close()"
 				>
 					Close
 				</button>
@@ -72,16 +73,14 @@ const { images } = Astro.props;
 	</div>
 </section>
 
-<script>
-	const thumbs = document.querySelectorAll<HTMLButtonElement>('.gallery-thumb');
-	const dialog = document.getElementById('gallery-lightbox') as HTMLDialogElement | null;
-	const imgEl = document.getElementById('gallery-lightbox-img') as HTMLImageElement | null;
+<script is:inline>
+	(function () {
+		const dialog = document.getElementById('gallery-lightbox');
+		const imgEl = document.getElementById('gallery-lightbox-img');
+		if (!dialog || !imgEl || !('showModal' in dialog)) return;
 
-	if (dialog && imgEl) {
-		const closeBtn = dialog.querySelector<HTMLButtonElement>('.gallery-lightbox-close');
-
-		thumbs.forEach((btn) => {
-			btn.addEventListener('click', () => {
+		document.querySelectorAll('.gallery-thumb').forEach(function (btn) {
+			btn.addEventListener('click', function () {
 				const tile = btn.querySelector('img');
 				if (!tile) return;
 				imgEl.src = tile.currentSrc || tile.src;
@@ -90,13 +89,27 @@ const { images } = Astro.props;
 			});
 		});
 
-		closeBtn?.addEventListener('click', () => {
+		dialog.addEventListener('click', function (e) {
+			if (e.target === dialog) dialog.close();
+		});
+
+		dialog.addEventListener('cancel', function () {
 			dialog.close();
 		});
-	}
+	})();
 </script>
 
 <style>
+	/* Native <dialog> must stay display:none when closed; Tailwind `flex` was forcing it visible. */
+	.gallery-dialog:not([open]) {
+		display: none;
+	}
+
+	.gallery-dialog[open] {
+		display: flex;
+		flex-direction: column;
+	}
+
 	/* Center in the top layer + dim behind the modal */
 	.gallery-dialog::backdrop {
 		background: rgb(22 32 42 / 0.55);
