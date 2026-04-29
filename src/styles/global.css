@@ -4,4 +4,17 @@
 	--font-sans:
 		'DM Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
 		'Segoe UI Symbol';
+
+	/* Derived from logo: teal field, purple + orange accents, ginger, ink */
+	--color-lp-teal: #5cb8aa;
+	--color-lp-teal-deep: #459e92;
+	--color-lp-mint: #e8f6f3;
+	--color-lp-mint-strong: #d0ebe5;
+	--color-lp-purple: #6e56cf;
+	--color-lp-purple-soft: #8b7ae0;
+	--color-lp-orange: #ee5f2b;
+	--color-lp-ginger: #e8956a;
+	--color-lp-ink: #16202a;
+	--color-lp-slate: #3d4f5c;
+	--color-lp-cream: #fafcf9;
 }

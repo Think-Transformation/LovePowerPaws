@@ -8,22 +8,22 @@ type Props = {
 const { images } = Astro.props;
 ---
 
-<section id="gallery" class="scroll-mt-20 border-t border-stone-200/80 bg-white py-16 sm:py-20">
+<section id="gallery" class="scroll-mt-20 border-t border-lp-mint-strong/90 bg-white py-16 sm:py-20">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6">
-		<h2 class="font-display text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
+		<h2 class="font-display text-3xl font-semibold tracking-tight text-lp-ink sm:text-4xl">
 			Gallery
 		</h2>
-		<p class="mt-3 max-w-2xl text-stone-600">
-			New photos from the booth land here. Add images to <code class="rounded bg-stone-100 px-1.5 py-0.5 text-sm">public/gallery/</code> and push to GitHub — the site rebuilds automatically.
+		<p class="mt-3 max-w-2xl text-lp-slate">
+			New photos from the booth land here. Add images to <code class="rounded bg-lp-mint px-1.5 py-0.5 text-sm text-lp-ink">public/gallery/</code> and push to GitHub — the site rebuilds automatically.
 		</p>
 
 		{
 			images.length === 0 ? (
-				<div class="mt-10 rounded-2xl border border-dashed border-stone-300 bg-stone-50/80 px-6 py-14 text-center text-stone-600">
-					<p class="font-medium text-stone-800">No photos yet</p>
+				<div class="mt-10 rounded-2xl border border-dashed border-lp-teal/40 bg-lp-mint/50 px-6 py-14 text-center text-lp-slate">
+					<p class="font-medium text-lp-ink">No photos yet</p>
 					<p class="mt-2 text-sm">
 						Drop <span class="whitespace-nowrap">.jpg / .png / .webp</span> files into{' '}
-						<code class="rounded bg-white px-1.5 py-0.5 text-stone-800">public/gallery/</code> to
+						<code class="rounded bg-white px-1.5 py-0.5 text-lp-ink">public/gallery/</code> to
 						fill this grid.
 					</p>
 				</div>
@@ -33,7 +33,7 @@ const { images } = Astro.props;
 						<li>
 							<button
 								type="button"
-								class="gallery-thumb group relative block w-full overflow-hidden rounded-2xl border border-stone-200/90 bg-stone-100 text-left shadow-sm transition hover:border-amber-300/80 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/70"
+								class="gallery-thumb group relative block w-full overflow-hidden rounded-2xl border border-lp-mint-strong/90 bg-lp-mint/40 text-left shadow-sm transition hover:border-lp-teal hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-lp-purple/60"
 								data-gallery-index={i}
 								aria-label={`Open larger view: ${img.alt}`}
 							>
@@ -44,7 +44,7 @@ const { images } = Astro.props;
 									decoding="async"
 									class="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
 								/>
-								<span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-900/70 to-transparent px-4 pb-3 pt-10 text-sm font-medium text-white">
+								<span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-lp-ink/75 to-transparent px-4 pb-3 pt-10 text-sm font-medium text-white">
 									{img.alt}
 								</span>
 							</button>
@@ -56,9 +56,9 @@ const { images } = Astro.props;
 
 		<dialog
 			id="gallery-lightbox"
-			class="gallery-dialog max-h-[90vh] max-w-[min(96vw,56rem)] rounded-2xl border border-stone-200 bg-stone-950 p-0 text-stone-50 shadow-2xl backdrop:bg-stone-950/70 open:flex open:flex-col"
+			class="gallery-dialog max-h-[90vh] max-w-[min(96vw,56rem)] rounded-2xl border border-lp-mint-strong bg-lp-ink p-0 text-stone-50 shadow-2xl backdrop:bg-lp-ink/75 open:flex open:flex-col"
 		>
-			<form method="dialog" class="flex items-center justify-end border-b border-stone-800 px-3 py-2">
+			<form method="dialog" class="flex items-center justify-end border-b border-white/10 px-3 py-2">
 				<button
 					type="submit"
 					class="rounded-lg px-3 py-1.5 text-sm font-medium text-stone-300 hover:bg-stone-800 hover:text-white"
@@ -103,6 +103,6 @@ const { images } = Astro.props;
 
 <style>
 	.gallery-dialog::backdrop {
-		background: rgb(28 25 23 / 0.65);
+		background: rgb(22 32 42 / 0.72);
 	}
 </style>

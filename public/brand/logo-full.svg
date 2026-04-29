@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="lppLogoTitle">
+	<title id="lppLogoTitle">Love Power Paws</title>
+	<defs>
+		<clipPath id="lppCircle">
+			<circle cx="256" cy="256" r="248" />
+		</clipPath>
+	</defs>
+	<!-- Teal circle (brand field) -->
+	<circle cx="256" cy="256" r="248" fill="#5CB8AA" />
+	<g clip-path="url(#lppCircle)">
+		<!-- White dog (left) -->
+		<ellipse cx="168" cy="278" rx="102" ry="94" fill="#FFFFFF" />
+		<ellipse cx="118" cy="252" rx="44" ry="40" fill="#1A2436" />
+		<ellipse cx="188" cy="248" rx="10" ry="11" fill="#1A2436" />
+		<ellipse cx="132" cy="252" rx="9" ry="10" fill="#1A2436" />
+		<path
+			d="M155 332 Q175 352 210 338"
+			fill="none"
+			stroke="#6E56CF"
+			stroke-width="12"
+			stroke-linecap="round"
+		/>
+		<!-- Black dog (right) -->
+		<ellipse cx="344" cy="278" rx="102" ry="94" fill="#141C26" />
+		<ellipse cx="372" cy="248" rx="10" ry="11" fill="#F4F4F5" />
+		<ellipse cx="312" cy="252" rx="9" ry="10" fill="#F4F4F5" />
+		<path
+			d="M302 332 Q322 352 357 338"
+			fill="none"
+			stroke="#EE5F2B"
+			stroke-width="12"
+			stroke-linecap="round"
+		/>
+		<!-- Cat (center, foreground) -->
+		<g transform="translate(256 308)">
+			<path d="M-52 -62 L-38 -108 L-12 -78 Z" fill="#E8956A" />
+			<path d="M52 -62 L38 -108 L12 -78 Z" fill="#E8956A" />
+			<ellipse cx="0" cy="-8" rx="78" ry="68" fill="#FFFFFF" />
+			<ellipse cx="-26" cy="-18" rx="8" ry="10" fill="#1A2436" />
+			<ellipse cx="26" cy="-18" rx="8" ry="10" fill="#1A2436" />
+			<ellipse cx="0" cy="8" rx="6" ry="5" fill="#F4A4B5" />
+			<path
+				d="M-14 22 Q0 34 14 22"
+				fill="none"
+				stroke="#1A2436"
+				stroke-width="5"
+				stroke-linecap="round"
+			/>
+		</g>
+	</g>
+</svg>

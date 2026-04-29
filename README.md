@@ -9,6 +9,14 @@ Clone: `git clone git@github.com:Think-Transformation/LovePowerPaws.git`
 
 This is a **project** site (not `*.github.io`), so the default GitHub URL is **`https://think-transformation.github.io/LovePowerPaws/`** until **`lovepowerpaws.com`** is configured in Pages + DNS. With the custom domain enabled, the site is served at the domain root (paths like `/thanks/` stay correct).
 
+## Brand (logo + colors)
+
+- **Header logo:** [`public/brand/logo-full.svg`](public/brand/logo-full.svg) (linked from the site header).
+- **Favicon (mark):** [`public/favicon.svg`](public/favicon.svg) and [`public/brand/logo-mark.svg`](public/brand/logo-mark.svg) — cat-on-teal mark for small sizes.
+- **Theme tokens:** [`src/styles/global.css`](src/styles/global.css) defines Tailwind `lp-*` colors (teal, purple, orange, ginger, ink) used across components.
+
+If you export official vector assets from your design file, replace those SVGs (keep the same filenames) so you don’t need code changes.
+
 ## Local development
 
 ```bash
