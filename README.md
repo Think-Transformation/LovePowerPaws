@@ -11,8 +11,9 @@ This is a **project** site (not `*.github.io`), so the default GitHub URL is **`
 
 ## Brand (logo + colors)
 
-- **Header logo:** [`public/brand/logo-full.svg`](public/brand/logo-full.svg) (linked from the site header).
-- **Favicon (mark):** [`public/favicon.svg`](public/favicon.svg) and [`public/brand/logo-mark.svg`](public/brand/logo-mark.svg) — cat-on-teal mark for small sizes.
+- **Header logo:** [`public/brand/logo-text.png`](public/brand/logo-text.png) (wordmark in the site header).
+- **Round mark (optional asset):** [`public/brand/logo-full.svg`](public/brand/logo-full.svg).
+- **Favicon:** [`public/favicon.svg`](public/favicon.svg) (and [`public/favicon.ico`](public/favicon.ico) for broader browser support).
 - **Theme tokens:** [`src/styles/global.css`](src/styles/global.css) defines Tailwind `lp-*` colors (teal, purple, orange, ginger, ink) used across components.
 
 If you export official vector assets from your design file, replace those SVGs (keep the same filenames) so you don’t need code changes.
