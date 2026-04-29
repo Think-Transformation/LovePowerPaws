@@ -18,27 +18,27 @@ const images = getGalleryImages();
 	</a>
 
 	<header class="sticky top-0 z-40 border-b border-lp-mint-strong/90 bg-lp-cream/90 backdrop-blur-md">
-		<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-			<a href="/" class="flex shrink-0 items-center rounded-lg ring-lp-teal/0 transition hover:ring-4 focus:outline-none focus-visible:ring-4 focus-visible:ring-lp-teal/35" aria-label="Love Power Paws home">
+		<div class="mx-auto flex max-w-6xl items-center justify-between gap-5 px-4 py-4 sm:gap-6 sm:px-6 sm:py-5">
+			<a href="/" class="flex min-w-0 shrink items-center rounded-lg ring-lp-teal/0 transition hover:ring-4 focus:outline-none focus-visible:ring-4 focus-visible:ring-lp-teal/35" aria-label="Love Power Paws home">
 				<img
 					src="/brand/logo-text.png"
 					alt="Love Power Paws"
 					width="940"
 					height="385"
-					class="h-9 w-auto max-h-10 max-w-[min(70vw,260px)] object-contain object-left sm:h-10 sm:max-h-11 sm:max-w-[min(72vw,300px)]"
+					class="h-12 w-auto max-h-14 max-w-[min(78vw,360px)] object-contain object-left sm:h-14 sm:max-h-16 sm:max-w-[min(80vw,440px)]"
 					decoding="async"
 				/>
 			</a>
 			<nav
 				aria-label="Primary"
-				class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-xs font-medium text-lp-slate sm:gap-x-6 sm:text-sm"
+				class="flex shrink-0 flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm font-medium text-lp-slate sm:gap-x-7 sm:text-base"
 			>
 				<a href="#updates" class="transition hover:text-lp-ink">Updates</a>
 				<a href="#gallery" class="transition hover:text-lp-ink">Gallery</a>
 				<a href="#about" class="transition hover:text-lp-ink">About</a>
 				<a
 					href="#subscribe"
-					class="rounded-full bg-lp-teal px-3 py-1.5 text-white shadow-sm transition hover:bg-lp-teal-deep focus:outline-none focus-visible:ring-4 focus-visible:ring-lp-teal-deep/40 sm:px-4 sm:py-2"
+					class="rounded-full bg-lp-teal px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-lp-teal-deep focus:outline-none focus-visible:ring-4 focus-visible:ring-lp-teal-deep/40 sm:px-5 sm:py-2.5 sm:text-base"
 				>
 					Subscribe
 				</a>
@@ -87,7 +87,7 @@ const images = getGalleryImages();
 
 		<Gallery images={images} />
 
-		<section id="about" class="scroll-mt-20 border-t border-lp-mint-strong/90 bg-white py-16 sm:py-20">
+		<section id="about" class="scroll-mt-28 border-t border-lp-mint-strong/90 bg-white py-16 sm:py-20">
 			<div class="mx-auto max-w-6xl px-4 sm:px-6">
 				<h2 class="font-display text-3xl font-semibold tracking-tight text-lp-ink sm:text-4xl">About</h2>
 				<div class="mt-8 grid gap-10 lg:grid-cols-3 lg:gap-12">
