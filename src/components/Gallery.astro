@@ -50,24 +50,26 @@ const { images } = Astro.props;
 
 		<dialog
 			id="gallery-lightbox"
-			class="gallery-dialog fixed left-1/2 top-1/2 z-[100] max-h-[90vh] w-[min(96vw,56rem)] max-w-[min(96vw,56rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-white/25 bg-lp-teal p-0 text-white shadow-2xl"
+			class="gallery-dialog fixed left-1/2 top-1/2 z-[100] w-[min(94vw,56rem)] max-w-[min(94vw,56rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-white/25 bg-lp-teal p-0 text-white shadow-2xl"
 		>
-			<div class="flex items-center justify-end border-b border-white/20 px-3 py-2">
-				<button
-					type="button"
-					class="gallery-lightbox-close rounded-lg px-3 py-1.5 text-sm font-semibold text-white/95 hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
-					onclick="this.closest('dialog')?.close()"
-				>
-					Close
-				</button>
-			</div>
-			<div class="min-h-0 flex-1 overflow-auto p-4 sm:p-6">
-				<img
-					id="gallery-lightbox-img"
-					src=""
-					alt=""
-					class="mx-auto max-h-[70vh] w-auto max-w-full rounded-lg object-contain shadow-lg ring-1 ring-white/35"
-				/>
+			<div class="gallery-lightbox-panel flex min-h-0 flex-1 flex-col overflow-hidden">
+				<div class="flex shrink-0 items-center justify-end border-b border-white/20 px-3 py-2">
+					<button
+						type="button"
+						class="gallery-lightbox-close rounded-lg px-3 py-1.5 text-sm font-semibold text-white/95 hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+						onclick="this.closest('dialog')?.close()"
+					>
+						Close
+					</button>
+				</div>
+				<div class="gallery-lightbox-body min-h-0 flex-1 overflow-y-auto overscroll-contain p-3 sm:p-6">
+					<img
+						id="gallery-lightbox-img"
+						src=""
+						alt=""
+						class="gallery-lightbox-img mx-auto block h-auto w-full max-w-full rounded-lg object-contain shadow-lg ring-1 ring-white/35"
+					/>
+				</div>
 			</div>
 		</dialog>
 	</div>
@@ -108,6 +110,27 @@ const { images } = Astro.props;
 	.gallery-dialog[open] {
 		display: flex;
 		flex-direction: column;
+		max-height: min(90dvh, 90vh);
+	}
+
+	/*
+	 * Mobile: give the dialog a real height so flex children (image area) don’t collapse to zero.
+	 * Desktop: height follows content up to max-height.
+	 */
+	@media (max-width: 639px) {
+		.gallery-dialog[open] {
+			height: min(90dvh, 90vh);
+		}
+
+		.gallery-lightbox-img {
+			max-height: calc(90dvh - 5.5rem);
+		}
+	}
+
+	@media (min-width: 640px) {
+		.gallery-lightbox-img {
+			max-height: min(70vh, calc(90dvh - 5.5rem));
+		}
 	}
 
 	/* Center in the top layer + dim behind the modal */
