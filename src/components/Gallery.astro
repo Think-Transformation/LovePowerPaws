@@ -50,18 +50,23 @@ const { images } = Astro.props;
 
 		<dialog
 			id="gallery-lightbox"
-			class="gallery-dialog max-h-[90vh] max-w-[min(96vw,56rem)] rounded-2xl border border-lp-mint-strong bg-lp-ink p-0 text-stone-50 shadow-2xl backdrop:bg-lp-ink/75 open:flex open:flex-col"
+			class="gallery-dialog fixed inset-0 z-[100] m-auto flex h-fit max-h-[90vh] w-[min(96vw,56rem)] max-w-[min(96vw,56rem)] flex-col overflow-hidden rounded-2xl border border-white/25 bg-lp-teal p-0 text-white shadow-2xl"
 		>
-			<form method="dialog" class="flex items-center justify-end border-b border-white/10 px-3 py-2">
+			<form method="dialog" class="flex items-center justify-end border-b border-white/20 px-3 py-2">
 				<button
 					type="submit"
-					class="rounded-lg px-3 py-1.5 text-sm font-medium text-stone-300 hover:bg-stone-800 hover:text-white"
+					class="rounded-lg px-3 py-1.5 text-sm font-semibold text-white/95 hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
 				>
 					Close
 				</button>
 			</form>
 			<div class="min-h-0 flex-1 overflow-auto p-4 sm:p-6">
-				<img id="gallery-lightbox-img" src="" alt="" class="mx-auto max-h-[70vh] w-auto max-w-full rounded-lg object-contain" />
+				<img
+					id="gallery-lightbox-img"
+					src=""
+					alt=""
+					class="mx-auto max-h-[70vh] w-auto max-w-full rounded-lg object-contain shadow-lg ring-1 ring-white/35"
+				/>
 			</div>
 		</dialog>
 	</div>
@@ -93,7 +98,8 @@ const { images } = Astro.props;
 </script>
 
 <style>
+	/* Center in the top layer + dim behind the modal */
 	.gallery-dialog::backdrop {
-		background: rgb(22 32 42 / 0.72);
+		background: rgb(22 32 42 / 0.55);
 	}
 </style>
