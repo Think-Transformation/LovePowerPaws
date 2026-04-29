@@ -1,7 +1,6 @@
 ---
 const campaignToken = import.meta.env.PUBLIC_GETRESPONSE_CAMPAIGN_TOKEN ?? '';
 const thankYouUrl = new URL('/thanks/', Astro.site).href;
-const showTokenWarning = !campaignToken;
 ---
 
 <section id="subscribe" class="scroll-mt-20 border-t border-lp-mint-strong/90 bg-lp-mint/35 py-16 sm:py-20">
@@ -15,25 +14,9 @@ const showTokenWarning = !campaignToken;
 					Join the mailing list for news about Love Power Paws at The Shed — schedules, specials, and what we’re
 					bringing to booth <strong>#6113</strong>.
 				</p>
-				<p class="mt-4 text-sm text-lp-slate/85">
-					We use GetResponse to send updates. You can unsubscribe anytime from messages you receive.
-				</p>
 			</div>
 
 			<div class="rounded-2xl border border-lp-mint-strong/90 bg-white p-6 shadow-sm sm:p-8">
-				{
-					showTokenWarning ? (
-						<div class="mb-6 rounded-xl border border-lp-ginger/50 bg-lp-mint px-4 py-3 text-sm text-lp-ink">
-							<p class="font-medium">Action needed</p>
-							<p class="mt-1 text-lp-slate">
-								Set <code class="rounded bg-white/80 px-1">PUBLIC_GETRESPONSE_CAMPAIGN_TOKEN</code> in{' '}
-								<code class="rounded bg-white/80 px-1">.env</code> (local) and in GitHub Actions secrets
-								(see README) so subscriptions reach your list.
-							</p>
-						</div>
-					) : null
-				}
-
 				<form
 					action="https://app.getresponse.com/add_subscriber.html"
 					accept-charset="utf-8"
