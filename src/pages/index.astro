@@ -1,17 +1,135 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.astro';
+import GetResponseForm from '../components/GetResponseForm.astro';
+import BoothUpdates from '../components/BoothUpdates.astro';
+import { getGalleryImages } from '../lib/gallery';
+import updates from '../content/updates.json';
 
+const images = getGalleryImages();
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Love Power Paws | Booth #6113 at The Shed">
+	<a
+		href="#main"
+		class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-stone-900 focus:shadow-lg"
+	>
+		Skip to content
+	</a>
+
+	<header class="sticky top-0 z-40 border-b border-stone-200/80 bg-stone-50/85 backdrop-blur-md">
+		<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+			<a href="/" class="font-display text-lg font-semibold tracking-tight text-stone-900">
+				Love Power Paws
+			</a>
+			<nav
+				aria-label="Primary"
+				class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-xs font-medium text-stone-700 sm:gap-x-6 sm:text-sm"
+			>
+				<a href="#updates" class="transition hover:text-stone-900">Updates</a>
+				<a href="#gallery" class="transition hover:text-stone-900">Gallery</a>
+				<a href="#about" class="transition hover:text-stone-900">About</a>
+				<a
+					href="#subscribe"
+					class="rounded-full bg-stone-900 px-3 py-1.5 text-white shadow-sm transition hover:bg-stone-800 sm:px-4 sm:py-2"
+				>
+					Subscribe
+				</a>
+			</nav>
+		</div>
+	</header>
+
+	<main id="main">
+		<section class="relative overflow-hidden">
+			<div
+				class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-amber-200/50 blur-3xl"
+				aria-hidden="true"
+			/>
+			<div
+				class="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-orange-200/40 blur-3xl"
+				aria-hidden="true"
+			/>
+
+			<div class="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-20">
+				<p class="text-sm font-semibold uppercase tracking-wider text-amber-800/90">The Shed</p>
+				<h1 class="font-display mt-3 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
+					Visit us at booth <span class="text-amber-800">#6113</span>
+				</h1>
+				<p class="mt-5 max-w-2xl text-lg text-stone-600">
+					We’re bringing Love Power Paws to the show floor — meet the team, see what’s new, and stay in touch
+					after you head home.
+				</p>
+				<div class="mt-8 flex flex-wrap gap-3">
+					<a
+						href="#gallery"
+						class="inline-flex items-center justify-center rounded-xl bg-stone-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-stone-800 focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500/35"
+					>
+						See the gallery
+					</a>
+					<a
+						href="#subscribe"
+						class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-stone-900 shadow-sm transition hover:border-amber-400/80 hover:bg-amber-50/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500/25"
+					>
+						Email me updates
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<BoothUpdates updates={updates} />
+
+		<Gallery images={images} />
+
+		<section id="about" class="scroll-mt-20 border-t border-stone-200/80 bg-white py-16 sm:py-20">
+			<div class="mx-auto max-w-6xl px-4 sm:px-6">
+				<h2 class="font-display text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">About</h2>
+				<div class="mt-8 grid gap-10 lg:grid-cols-3 lg:gap-12">
+					<div class="lg:col-span-2">
+						<p class="text-lg text-stone-700">
+							Love Power Paws is here to connect with fellow animal lovers and share what we’re building. At
+							<strong> booth #6113</strong> you’ll find our team ready to answer questions, show what’s new,
+							and celebrate the community that makes this work meaningful.
+						</p>
+						<p class="mt-4 text-stone-600">
+							Whether you’re planning a visit or just curious, bookmark this page — we’ll keep the gallery and
+							updates fresh as the show approaches.
+						</p>
+					</div>
+					<aside class="rounded-2xl border border-stone-200/90 bg-stone-50 p-6">
+						<h3 class="text-sm font-semibold uppercase tracking-wide text-stone-500">At the booth</h3>
+						<ul class="mt-4 space-y-3 text-stone-800">
+							<li class="flex gap-3">
+								<span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-amber-500" aria-hidden="true" />
+								<span>Meet the Love Power Paws team</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-amber-500" aria-hidden="true" />
+								<span>See photos and highlights in the gallery</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-amber-500" aria-hidden="true" />
+								<span>Subscribe for post-show updates</span>
+							</li>
+						</ul>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<GetResponseForm />
+	</main>
+
+	<footer class="border-t border-stone-200/80 bg-stone-900 py-10 text-stone-300">
+		<div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+			<div>
+				<p class="font-display text-lg font-semibold text-white">Love Power Paws</p>
+				<p class="mt-1 text-sm text-stone-400">The Shed — booth #6113</p>
+			</div>
+			<p class="text-sm text-stone-400">
+				<a href="#subscribe" class="text-amber-200/90 underline-offset-4 hover:underline">Mailing list</a>
+				<span class="mx-2 text-stone-600" aria-hidden="true">·</span>
+				<a href="#gallery" class="text-amber-200/90 underline-offset-4 hover:underline">Gallery</a>
+			</p>
+		</div>
+	</footer>
+</Layout>

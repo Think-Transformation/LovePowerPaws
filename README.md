@@ -1,43 +1,82 @@
-# Astro Starter Kit: Minimal
+# Love Power Paws — marketing site (GitHub Pages)
 
-```sh
-npm create astro@latest -- --template minimal
+Static marketing site for **lovepowerpaws.com**, focused on **booth #6113** at **The Shed**: hero, optional booth text updates, image gallery, about, and a **GetResponse** mailing list form.
+
+Built with [Astro](https://astro.build/) (static output) and deployed with **GitHub Actions** to **GitHub Pages**.
+
+## Local development
+
+```bash
+npm install
+cp .env.example .env
+# Set PUBLIC_GETRESPONSE_CAMPAIGN_TOKEN in .env for local previews
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build   # output in dist/
+npm run preview # serve dist/
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## GetResponse
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+1. In GetResponse, enable **plain HTML form** signups for your list if required (new lists may block this by default).
+2. Copy your list **campaign token** from GetResponse’s HTML form snippet.
+3. Local: set `PUBLIC_GETRESPONSE_CAMPAIGN_TOKEN` in `.env` (see `.env.example`).
+4. CI: add a GitHub Actions secret named **`GETRESPONSE_CAMPAIGN_TOKEN`** with the same value. The workflow passes it to the build as `PUBLIC_GETRESPONSE_CAMPAIGN_TOKEN`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+The form posts to GetResponse and redirects subscribers to `/thanks/` on this domain.
 
-## 🧞 Commands
+## Gallery
 
-All commands are run from the root of the project, from a terminal:
+- Add images under [`public/gallery/`](public/gallery/) (`.jpg`, `.png`, `.webp`, `.gif`, `.avif`).
+- Push to GitHub; the **Deploy site to GitHub Pages** workflow rebuilds the site.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Optional captions and order
 
-## 👀 Want to learn more?
+Edit [`src/content/gallery.json`](src/content/gallery.json):
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **`captions`**: map filename → caption (e.g. `"booth-sign.jpg": "Our booth sign"`).
+- **`order`**: list filenames in the order you want them shown (any files not listed are appended alphabetically).
+
+## Booth text updates
+
+Edit [`src/content/updates.json`](src/content/updates.json). Remove or empty `items` to hide the **Booth updates** section.
+
+## GitHub Pages setup
+
+1. Create your **`username.github.io`** (or org) repository and push this project (default branch **`main`**).
+2. Repo **Settings → Pages**:
+   - **Build and deployment**: Source **GitHub Actions**.
+3. After the first successful deploy, set the **custom domain** to `lovepowerpaws.com` (GitHub will commit or manage `public/CNAME`; this repo already includes [`public/CNAME`](public/CNAME)).
+4. Enable **Enforce HTTPS** once the certificate is ready.
+
+### DNS (apex + www)
+
+At your DNS host for `lovepowerpaws.com`:
+
+**Apex (`lovepowerpaws.com`)** — add **four** `A` records (GitHub Pages):
+
+| Type | Name | Data             |
+| ---- | ---- | ---------------- |
+| A    | @    | `185.199.108.153` |
+| A    | @    | `185.199.109.153` |
+| A    | @    | `185.199.110.153` |
+| A    | @    | `185.199.111.153` |
+
+**`www`** — add a `CNAME` to your Pages host, e.g. `YOUR_USERNAME.github.io` (replace with your GitHub username or org).
+
+Confirm values in GitHub Docs if they change: [Configuring a custom domain for your GitHub Pages site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
+
+## Phase 2: Slack → auto-publish (optional)
+
+GitHub Pages only updates when the **git repository** changes. To let someone post images or text in **Slack** and have the site redeploy:
+
+- Use **Zapier** or **Make** (or a small **Cloudflare Worker**) to listen for messages/files in a **dedicated private channel**, then use the **GitHub API** to commit files under `public/gallery/` and/or append to `src/content/updates.json`.
+- Your existing **Deploy site to GitHub Pages** workflow will run on that commit.
+
+Use a **private channel**, restrict who can post, and store **GitHub tokens** only in the automation’s secrets.
+
+## License
+
+Private project — all rights reserved unless you add a license.
