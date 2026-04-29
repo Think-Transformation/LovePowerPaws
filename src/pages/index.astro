@@ -31,11 +31,13 @@ const images = getGalleryImages();
 			</a>
 			<nav
 				aria-label="Primary"
-				class="flex shrink-0 flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm font-medium text-lp-slate sm:gap-x-7 sm:text-base"
+				class="flex shrink-0 items-center justify-end gap-4 text-sm font-medium text-lp-slate sm:gap-7 sm:text-base"
 			>
-				<a href="#updates" class="transition hover:text-lp-ink">Updates</a>
-				<a href="#gallery" class="transition hover:text-lp-ink">Gallery</a>
-				<a href="#about" class="transition hover:text-lp-ink">About</a>
+				<div class="hidden items-center sm:flex sm:gap-7">
+					<a href="#updates" class="transition hover:text-lp-ink">Updates</a>
+					<a href="#gallery" class="transition hover:text-lp-ink">Gallery</a>
+					<a href="#about" class="transition hover:text-lp-ink">About</a>
+				</div>
 				<a
 					href="#subscribe"
 					class="rounded-full bg-lp-teal px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-lp-teal-deep focus:outline-none focus-visible:ring-4 focus-visible:ring-lp-teal-deep/40 sm:px-5 sm:py-2.5 sm:text-base"
