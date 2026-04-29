@@ -4,6 +4,11 @@ Static marketing site for **lovepowerpaws.com**, focused on **booth #6113** at *
 
 Built with [Astro](https://astro.build/) (static output) and deployed with **GitHub Actions** to **GitHub Pages**.
 
+**Repository:** [Think-Transformation/LovePowerPaws](https://github.com/Think-Transformation/LovePowerPaws)  
+Clone: `git clone git@github.com:Think-Transformation/LovePowerPaws.git`
+
+This is a **project** site (not `*.github.io`), so the default GitHub URL is **`https://think-transformation.github.io/LovePowerPaws/`** until **`lovepowerpaws.com`** is configured in Pages + DNS. With the custom domain enabled, the site is served at the domain root (paths like `/thanks/` stay correct).
+
 ## Local development
 
 ```bash
@@ -45,7 +50,7 @@ Edit [`src/content/updates.json`](src/content/updates.json). Remove or empty `it
 
 ## GitHub Pages setup
 
-1. Create your **`username.github.io`** (or org) repository and push this project (default branch **`main`**).
+1. Use this repo (**`Think-Transformation/LovePowerPaws`**) on branch **`main`** (already pushed).
 2. Repo **Settings → Pages**:
    - **Build and deployment**: Source **GitHub Actions**.
 3. After the first successful deploy, set the **custom domain** to `lovepowerpaws.com` (GitHub will commit or manage `public/CNAME`; this repo already includes [`public/CNAME`](public/CNAME)).
@@ -64,7 +69,7 @@ At your DNS host for `lovepowerpaws.com`:
 | A    | @    | `185.199.110.153` |
 | A    | @    | `185.199.111.153` |
 
-**`www`** — add a `CNAME` to your Pages host, e.g. `YOUR_USERNAME.github.io` (replace with your GitHub username or org).
+**`www`** — add a `CNAME` to **`think-transformation.github.io`** (GitHub Pages hostname for the `Think-Transformation` org).
 
 Confirm values in GitHub Docs if they change: [Configuring a custom domain for your GitHub Pages site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
