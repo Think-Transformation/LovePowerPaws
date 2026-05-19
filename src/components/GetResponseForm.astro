@@ -1,66 +1,44 @@
 ---
-const campaignToken = import.meta.env.PUBLIC_GETRESPONSE_CAMPAIGN_TOKEN ?? '';
-const thankYouUrl = new URL('/thanks/', Astro.site).href;
+import GetResponseSignupForm from './GetResponseSignupForm.astro';
+
+interface Props {
+	id?: string;
+	heading?: string;
+	description?: string;
+	submitLabel?: string;
+	thankYouPath?: string;
+	showBorder?: boolean;
+	formIdSuffix?: string;
+}
+
+const {
+	id = 'subscribe',
+	heading = 'Get booth updates',
+	description = 'Join the mailing list for occasional updates — new designs, booth favorites, and what we’re featuring at #6113.',
+	submitLabel = 'Subscribe',
+	thankYouPath = '/thanks/',
+	showBorder = true,
+	formIdSuffix = '',
+} = Astro.props;
+
+const sectionClass = showBorder
+	? 'scroll-mt-28 border-t border-lp-mint-strong/90 bg-lp-mint/35 py-16 sm:py-20'
+	: 'py-0';
 ---
 
-<section id="subscribe" class="scroll-mt-28 border-t border-lp-mint-strong/90 bg-lp-mint/35 py-16 sm:py-20">
+<section id={id} class={sectionClass}>
 	<div class="mx-auto max-w-6xl px-4 sm:px-6">
 		<div class="grid gap-10 lg:grid-cols-2 lg:gap-16 lg:items-start">
 			<div>
 				<h2 class="font-display text-3xl font-semibold tracking-tight text-lp-ink sm:text-4xl">
-					Get booth updates
+					{heading}
 				</h2>
 				<p class="mt-3 text-lp-slate">
-					Join the mailing list for occasional updates — new designs, booth favorites, and what we’re featuring at{' '}
-					<strong>#6113</strong>.
+					{description}
 				</p>
 			</div>
 
-			<div class="rounded-2xl border border-lp-mint-strong/90 bg-white p-6 shadow-sm sm:p-8">
-				<form
-					action="https://app.getresponse.com/add_subscriber.html"
-					accept-charset="utf-8"
-					method="post"
-					class="space-y-4"
-				>
-					<div>
-						<label for="gr-email" class="block text-sm font-medium text-lp-ink">
-							Email <span class="text-red-600">*</span>
-						</label>
-						<input
-							id="gr-email"
-							type="email"
-							name="email"
-							required
-							autocomplete="email"
-							placeholder="you@example.com"
-							class="mt-1.5 w-full rounded-xl border border-lp-mint-strong bg-white px-3 py-2.5 text-lp-ink shadow-sm outline-none ring-lp-teal/0 transition focus:border-lp-teal focus:ring-4 focus:ring-lp-teal/25"
-						/>
-					</div>
-					<div>
-						<label for="gr-name" class="block text-sm font-medium text-lp-ink">Name (optional)</label>
-						<input
-							id="gr-name"
-							type="text"
-							name="name"
-							autocomplete="name"
-							placeholder="Your name"
-							class="mt-1.5 w-full rounded-xl border border-lp-mint-strong bg-white px-3 py-2.5 text-lp-ink shadow-sm outline-none ring-lp-teal/0 transition focus:border-lp-teal focus:ring-4 focus:ring-lp-teal/25"
-						/>
-					</div>
-
-					<input type="hidden" name="campaign_token" value={campaignToken} />
-					<input type="hidden" name="thankyou_url" value={thankYouUrl} />
-					<input type="hidden" name="start_day" value="0" />
-
-					<button
-						type="submit"
-						class="w-full rounded-xl bg-lp-teal px-4 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-lp-teal-deep focus:outline-none focus-visible:ring-4 focus-visible:ring-lp-teal-deep/45"
-					>
-						Subscribe
-					</button>
-				</form>
-			</div>
+			<GetResponseSignupForm {submitLabel} {thankYouPath} formIdSuffix={formIdSuffix} />
 		</div>
 	</div>
 </section>

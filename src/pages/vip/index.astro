@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GetResponseForm from '../../components/GetResponseForm.astro';
+import GetResponseSignupForm from '../../components/GetResponseSignupForm.astro';
+
+const benefits = [
+	'Booth discounts, bundle deals, & hidden finds',
+	'Weekly customer & community pet spotlights',
+	'Fun, faith filled & Pawsitive content from Love & Power (the dogs)',
+	'Rescue stories, animal updates & uplifting messages from our pet family to yours',
+	'Scavenger hunts & pet deals at The Shed from other booth friends',
+	'Special requests & preorder opportunities for Dog & Cat finds when available (paid through The Shed at pickup)',
+	'Opportunities to donate or sell your pet items you no longer want or need to help support our sanctuary animals through our booth',
+	'Surprise giveaways, freebies & seasonal pet lover finds.',
+];
+---
+
+<Layout
+	title="Join the VIP Club | Love Power Paws"
+	description="Join the Love Power Paws VIP Club for booth discounts, pet spotlights, rescue stories, giveaways, and exclusive updates from booth #6113 at The Shed."
+>
+	<a
+		href="#main"
+		class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-lp-ink focus:shadow-lg"
+	>
+		Skip to content
+	</a>
+
+	<header class="sticky top-0 z-40 border-b border-lp-mint-strong/90 bg-lp-cream/90 backdrop-blur-md">
+		<div class="mx-auto max-w-6xl px-4 py-4 sm:px-6 sm:py-5">
+			<a
+				href="/"
+				class="inline-flex rounded-lg ring-lp-teal/0 transition hover:ring-4 focus:outline-none focus-visible:ring-4 focus-visible:ring-lp-teal/35"
+				aria-label="Love Power Paws home"
+			>
+				<img
+					src="/brand/logo-text.png"
+					alt="Love Power Paws"
+					width="940"
+					height="385"
+					class="h-12 w-auto max-h-14 max-w-[min(78vw,360px)] object-contain object-left sm:h-14 sm:max-h-16 sm:max-w-[min(80vw,440px)]"
+					decoding="async"
+				/>
+			</a>
+		</div>
+	</header>
+
+	<main id="main">
+		<section class="relative overflow-hidden">
+			<div
+				class="pointer-events-none absolute -right-24 -top-24 z-0 h-72 w-72 rounded-full bg-lp-purple/20 blur-3xl"
+				aria-hidden="true"
+			/>
+			<div
+				class="pointer-events-none absolute -bottom-32 -left-24 z-0 h-80 w-80 rounded-full bg-lp-orange/25 blur-3xl"
+				aria-hidden="true"
+			/>
+
+			<div class="relative z-10 mx-auto max-w-6xl px-4 pb-12 pt-14 sm:px-6 sm:pb-16 sm:pt-20">
+				<div class="grid gap-10 lg:grid-cols-2 lg:gap-12 lg:items-start">
+					<div>
+						<p class="text-sm font-semibold uppercase tracking-wider text-lp-purple">VIP Club</p>
+						<h1
+							class="font-display mt-3 text-4xl font-semibold leading-tight tracking-tight text-lp-ink sm:text-5xl"
+						>
+							Join the Love Power Paws VIP Club
+						</h1>
+						<p class="mt-5 text-lg text-lp-slate">
+							Sign up for our mailing list and get the inside scoop on booth deals, community spotlights,
+							and pawsitive updates from Love & Power — plus surprises for pet lovers at The Shed.
+						</p>
+						<p class="mt-6">
+							<a
+								href="#benefits"
+								class="text-sm font-semibold text-lp-teal-deep underline-offset-4 transition hover:text-lp-teal hover:underline"
+							>
+								Scroll for member benefits
+							</a>
+						</p>
+					</div>
+
+					<GetResponseSignupForm
+						submitLabel="Join the VIP Club"
+						thankYouPath="/vip/thanks/"
+						formIdSuffix="-vip-hero"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<section id="benefits" class="scroll-mt-28 border-t border-lp-mint-strong/90 bg-white py-16 sm:py-20">
+			<div class="mx-auto max-w-6xl px-4 sm:px-6">
+				<h2 class="font-display text-3xl font-semibold tracking-tight text-lp-ink sm:text-4xl">
+					VIP member benefits
+				</h2>
+				<p class="mt-3 max-w-2xl text-lp-slate">
+					When you join the VIP Club, you’re part of our pet-loving community at booth <strong>#6113</strong>.
+				</p>
+				<ul class="mt-10 grid gap-4 sm:grid-cols-2">
+					{
+						benefits.map((benefit, index) => (
+							<li class="flex gap-4 rounded-2xl border border-lp-mint-strong/90 bg-lp-mint/40 p-5">
+								<span
+									class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-lp-teal text-sm font-semibold text-white"
+									aria-hidden="true"
+								>
+									{index + 1}
+								</span>
+								<span class="text-lp-ink">{benefit}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<section id="join" class="scroll-mt-28 border-t border-lp-mint-strong/90 bg-lp-mint/35 py-16 sm:py-20">
+			<div class="mx-auto max-w-6xl px-4 sm:px-6">
+				<GetResponseForm
+					id="join-form"
+					heading="Join the mailing list"
+					description="Enter your email below to join the Love Power Paws VIP Club. We’ll send updates, deals, and pawsitive news — no spam, just pet love."
+					submitLabel="Join the VIP Club"
+					thankYouPath="/vip/thanks/"
+					showBorder={false}
+					formIdSuffix="-vip"
+				/>
+			</div>
+		</section>
+	</main>
+
+	<footer class="border-t border-stone-200/80 bg-stone-900 py-10 text-stone-300">
+		<div class="mx-auto max-w-6xl px-4 sm:px-6">
+			<p class="font-display text-lg font-semibold text-white">Love Power Paws</p>
+			<p class="mt-1 text-sm text-stone-400">The Shed — booth #6113</p>
+		</div>
+	</footer>
+</Layout>

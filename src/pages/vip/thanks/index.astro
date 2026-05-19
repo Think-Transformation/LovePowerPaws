@@ -1,0 +1,34 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout
+	title="Welcome to the VIP Club | Love Power Paws"
+	description="You’re on the Love Power Paws VIP Club mailing list."
+>
+	<main class="mx-auto flex min-h-[70vh] max-w-2xl flex-col justify-center px-4 py-16 sm:px-6">
+		<p class="text-sm font-semibold uppercase tracking-wider text-lp-purple">VIP Club</p>
+		<h1 class="font-display mt-3 text-4xl font-semibold tracking-tight text-lp-ink">You’re in the VIP Club</h1>
+		<p class="mt-4 text-lg text-lp-slate">
+			Thanks for joining the Love Power Paws VIP Club. Watch your inbox for booth deals, pet spotlights, rescue
+			stories, and pawsitive updates from Love & Power.
+		</p>
+		<p class="mt-6 text-sm text-stone-500">
+			You can close this tab, or head back to the main page anytime.
+		</p>
+		<div class="mt-8 flex flex-wrap gap-3">
+			<a
+				href="/vip/"
+				class="inline-flex items-center justify-center rounded-xl border border-lp-mint-strong bg-white px-5 py-3 text-sm font-semibold text-lp-ink shadow-sm transition hover:border-lp-teal hover:bg-lp-mint focus:outline-none focus-visible:ring-4 focus-visible:ring-lp-teal/30"
+			>
+				VIP page
+			</a>
+			<a
+				href="/"
+				class="inline-flex items-center justify-center rounded-xl bg-lp-teal px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-lp-teal-deep focus:outline-none focus-visible:ring-4 focus-visible:ring-lp-teal-deep/45"
+			>
+				Back to home
+			</a>
+		</div>
+	</main>
+</Layout>
